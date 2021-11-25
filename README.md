@@ -1,4 +1,4 @@
-## W08D05 passport
+## W08D05 jwt and passport
 ![library](books.jpg)
 
 [Authentication](https://satr.codes/courses/0e68e4ed-33dd-4b69-8702-dbb24efda32c/session/fcbba8dc-a004-42a1-9efb-e2347f6ee618/view)
