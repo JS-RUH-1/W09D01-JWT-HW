@@ -1,4 +1,7 @@
-## W08D05 JWT
+## W08D05 passport
 ![library](books.jpg)
-* Complete the previous HW and create a form that user can signup, signin (use JWT).
-* Only when users signin they can add, update, delete the book. 
+
+[Passport](https://satr.codes/courses/0e68e4ed-33dd-4b69-8702-dbb24efda32c/session/fcbba8dc-a004-42a1-9efb-e2347f6ee618/view)
+
+* Complete the previous HW and create a form that Author can signup, signin.
+* Only when author signin they can add, update, delete their book. 
