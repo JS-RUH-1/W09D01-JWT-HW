@@ -1,0 +1,7 @@
+.books {
+  display: flex;
+  flex: 3;
+  flex-wrap: wrap;
+  border: 1px solid #00adbb;
+  margin: 10px;
+}
