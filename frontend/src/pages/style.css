@@ -1,0 +1,124 @@
+.authAndBook {
+}
+.myPage {
+  min-height: calc(100vh - 50px);
+  padding: 1% 0;
+}
+.NavBar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: transparent;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.408), rgba(255, 0, 0, 0));
+  height: 50px;
+}
+.NavBar > a {
+  text-shadow: 0 0 15px rgb(0, 0, 0);
+}
+.authors {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  padding: 1% 5%;
+  grid-gap: 15px;
+}
+.cardAuthor {
+  text-align: center;
+  padding: 1%;
+  color: white;
+  background-color: rgb(184, 133, 78);
+}
+.cardAuthor > h5 {
+  text-shadow: 0 0 5px black;
+}
+.desc {
+  display: flex;
+  justify-content: space-around;
+}
+.allBooks {
+  height: 250px;
+  overflow-y: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.labels {
+  width: 100px;
+}
+label + input {
+  margin: 2px 0;
+}
+.myTitle {
+  display: block;
+  width: max-content;
+  margin: auto;
+}
+.btns {
+  display: flex;
+  justify-content: space-around;
+}
+.form__add > label {
+  width: 70px;
+}
+.form__white__label > label {
+  color: white;
+  font-weight: bold;
+  text-shadow: 0 0 5px black;
+}
+.form__add {
+  text-align: center;
+  padding: 5% 0;
+  margin: 1% 0;
+  background-color: rgb(204, 230, 230);
+  border-radius: 70%;
+}
+.form__sign {
+  text-align: center;
+  padding: 5% 0;
+  margin: 1% 0;
+  background-color: rgba(255, 255, 255, 0.247);
+}
+.form__sign > form > label {
+  min-width: 80px;
+  font-weight: bold;
+}
+.noAccess {
+  min-height: calc(100vh - 50px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-shadow: 0 0 15px wheat;
+}
+.signOutBtn {
+  border: 0;
+  border-radius: 5px;
+  background-color: rgb(177, 0, 0);
+  color: white;
+  height: 65%;
+}
+@media screen and (max-width: 400px) {
+  .authors {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 1% 5%;
+
+    grid-gap: 5px;
+  }
+}
+@media screen and (min-width: 401px) and (max-width: 700px) {
+  .authors {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 1% 5%;
+
+    grid-gap: 5px;
+  }
+}
+@media screen and (min-width: 701px) and (max-width: 1000px) {
+  .authors {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 1% 5%;
+
+    grid-gap: 5px;
+  }
+}
