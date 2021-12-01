@@ -1,0 +1,32 @@
+{
+  "name": "w08d03-hw",
+  "version": "1.0.0",
+  "description": "* Install mongoose \r * Create app.js file and make the connection with mongoose\r * Create models folder that contain schema for author and book\r     * author schema:\r         1. name ==> type: string, required with message: \"Author name should be provided\"\r         2. age ==> type: Number\r         3. nationality ==> type: String, required with message: \"Author nationality should be provided\"\r         4. image ==> type: string, required with message: \"Author image should be provided\"\r         5. gender  ==> type: string\r         6. books ==> array of bookSchema",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Abdullah-Alsabi/W08D03-HW.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Abdullah-Alsabi/W08D03-HW/issues"
+  },
+  "homepage": "https://github.com/Abdullah-Alsabi/W08D03-HW#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.0.13",
+    "validator": "^13.7.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}

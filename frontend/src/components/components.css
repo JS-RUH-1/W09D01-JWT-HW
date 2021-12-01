@@ -1,0 +1,181 @@
+.continer {
+  display: grid;
+  grid-template-columns: 80% 18%;
+  grid-gap: 2%;
+}
+.main__authors {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 2%;
+}
+
+.selected__author {
+}
+
+.author__card {
+  position: relative;
+  display: flex;
+  flex-flow: column;
+  text-align: center;
+  align-items: center;
+  width: 100%;
+}
+.img {
+  width: 100%;
+  min-height: 150px;
+  height: 150px;
+  object-fit: fill;
+}
+/* Book css */
+.book__card {
+}
+.second__nav {
+  margin-left: 25%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.Link_SecNav {
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.delete__btn {
+  background-color: rgba(255, 0, 0, 0.541);
+  height: 50px;
+  width: 100px;
+  margin-top: 1%;
+}
+.new__btn {
+  background-color: rgba(0, 255, 0, 0.541);
+  height: 50px;
+  width: 100px;
+  margin-top: 1%;
+}
+.edit__btn {
+  background-color: rgb(0, 0, 255, 0.541);
+  height: 50px;
+  width: 100px;
+  margin-right: 1%;
+  margin-top: 1%;
+}
+/* Add Book Page Css */
+.addBookForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 5%;
+  margin: 5%;
+  text-align: center;
+  background-color: rgb(55, 144, 110);
+}
+.addBookForm2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: rgb(55, 144, 110);
+}
+.input__css {
+  width: 50%;
+  height: 20px;
+}
+.input__css2 {
+  width: 100%;
+  height: 20px;
+}
+/* NavBar css */
+.continer__NavBar {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.Link_Nav {
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 40px;
+}
+
+/* Home page css */
+
+.HomePage {
+  background-image: url("https://raw.githubusercontent.com/JS-RUH-1/W08D04/master/books.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 900px;
+  position: relative;
+}
+.imgParagraph {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  margin-top: 15%;
+  font-size: 80px;
+  color: coral;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Add padding to containers */
+.container {
+  padding: 16px;
+}
+
+/* Full-width input fields */
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Overwrite default styles of hr */
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+/* Set a style for the submit/register button */
+.registerbtn {
+  background-color: #04aa6d;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.registerbtn:hover {
+  opacity: 1;
+}
+
+/* Add a blue text color to links */
+a {
+  color: rgba(0, 128, 255, 0.52);
+}
+
+/* Set a grey background color and center the text of the "sign in" section */
+.signin {
+  background-color: #f1f1f1;
+  text-align: center;
+}
