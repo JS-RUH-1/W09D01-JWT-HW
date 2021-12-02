@@ -1,11 +1,18 @@
+@import "~bootstrap/dist/css/bootstrap.css";
+.main__continer {
+  margin: 0;
+  padding: 1% 2% 1% 2%;
+  text-align: center;
+}
 .continer {
   display: grid;
   grid-template-columns: 80% 18%;
   grid-gap: 2%;
+  padding: 3%;
 }
 .main__authors {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 2%;
 }
 
@@ -19,6 +26,8 @@
   text-align: center;
   align-items: center;
   width: 100%;
+  border: 1px solid gainsboro;
+  padding: 2%;
 }
 .img {
   width: 100%;
@@ -28,6 +37,14 @@
 }
 /* Book css */
 .book__card {
+  position: relative;
+  display: flex;
+  flex-flow: column;
+  text-align: center;
+  align-items: center;
+  width: 100%;
+  border: 1px solid gainsboro;
+  padding: 2%;
 }
 .second__nav {
   margin-left: 25%;
@@ -40,24 +57,31 @@
   font-weight: bold;
 }
 
+/* btns css */
+
+.btns__continer {
+  display: flex;
+}
+
 .delete__btn {
   background-color: rgba(255, 0, 0, 0.541);
-  height: 50px;
-  width: 100px;
-  margin-top: 1%;
+  height: 5vh;
+  width: 8vw;
+
+  margin-top: 5%;
 }
 .new__btn {
   background-color: rgba(0, 255, 0, 0.541);
-  height: 50px;
-  width: 100px;
-  margin-top: 1%;
+  height: 5vh;
+  width: 8vw;
+  margin-top: 5%;
 }
 .edit__btn {
   background-color: rgb(0, 0, 255, 0.541);
-  height: 50px;
-  width: 100px;
+  height: 5vh;
+  width: 8vw;
   margin-right: 1%;
-  margin-top: 1%;
+  margin-top: 5%;
 }
 /* Add Book Page Css */
 .addBookForm {
@@ -87,16 +111,18 @@
   height: 20px;
 }
 /* NavBar css */
-.continer__NavBar {
+/* .continer__NavBar {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
-}
+} */
 
 .Link_Nav {
   text-decoration: none;
   font-weight: bold;
   font-size: 40px;
+  margin-left: 30px;
+  margin-right: 30px;
 }
 
 /* Home page css */
@@ -116,9 +142,9 @@
   top: 0;
   bottom: 0;
   margin: auto;
-  margin-top: 15%;
-  font-size: 80px;
-  color: coral;
+  margin-top: 20%;
+  font-size: 6vh;
+  color: rgba(0, 128, 255, 0.863);
 }
 
 * {
@@ -178,4 +204,46 @@ a {
 .signin {
   background-color: #f1f1f1;
   text-align: center;
+}
+
+@media only screen and (max-width: 992px) {
+  .main__authors {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 2%;
+  }
+  .btns__continer {
+    display: flex;
+    flex-direction: column;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .main__authors {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 2%;
+  }
+  .btns__continer {
+    display: flex;
+    flex-direction: column;
+  }
+  .delete__btn {
+    height: 8vh;
+    width: 25vw;
+  }
+  .new__btn {
+    height: 8vh;
+    width: 25vw;
+  }
+  .edit__btn {
+    height: 8vh;
+    width: 25vw;
+    margin-right: 0%;
+  }
+  .continer {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 2%;
+    padding: 3%;
+  }
 }

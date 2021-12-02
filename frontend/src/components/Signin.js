@@ -1,25 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext, createContext } from "react";
 import "./components.css";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import userStatus from "./userStatus";
 
 function Signin() {
+  let { auth, setAuth } = useContext(userStatus);
+
   const [user, setUser] = useState({});
   const navigate = useNavigate();
-  useEffect(() => {
-    let Token = localStorage.getItem("Token");
-    // console.log(Token);
-    // console.log(props.auth);
-    if (Token) {
-      // setSingin("none");
-      // setSignOut("block");
-    } else {
-      // setSingin("block");
-      // setSignOut("none");
-    }
-  });
+
   async function hundleSubmit(e) {
     e.preventDefault();
+
     //reset errors
     // emailError.textContent = "";
     // passwordError.textContent = "";
@@ -31,6 +24,7 @@ function Signin() {
         .post("/authors/signin", user)
         .then((res) => {
           console.log(res.data);
+          setAuth(true);
           navigate("/");
         })
         .catch((err) => {
@@ -41,55 +35,57 @@ function Signin() {
     }
   }
   return (
-    <form onSubmit={hundleSubmit}>
-      <div className="container">
-        <h1>Signin</h1>
+    <div className="main__continer">
+      <form onSubmit={hundleSubmit}>
+        <div className="container">
+          <h1>Signin</h1>
 
-        <hr />
+          <hr />
 
-        <label for="email">
-          <b>Email</b>
-        </label>
-        <input
-          type="text"
-          placeholder="Enter Email"
-          name="email"
-          onChange={(e) => {
-            user.email = e.target.value;
-            setUser({ ...user });
-          }}
-          id="email"
-          required
-        />
+          <label for="email">
+            <b>Email</b>
+          </label>
+          <input
+            type="text"
+            placeholder="Enter Email"
+            name="email"
+            onChange={(e) => {
+              user.email = e.target.value;
+              setUser({ ...user });
+            }}
+            id="email"
+            required
+          />
 
-        <label for="psw">
-          <b>Password</b>
-        </label>
-        <input
-          type="password"
-          placeholder="Enter Password"
-          name="psw"
-          onChange={(e) => {
-            user.password = e.target.value;
-            setUser({ ...user });
-          }}
-          id="psw"
-          required
-        />
+          <label for="psw">
+            <b>Password</b>
+          </label>
+          <input
+            type="password"
+            placeholder="Enter Password"
+            name="psw"
+            onChange={(e) => {
+              user.password = e.target.value;
+              setUser({ ...user });
+            }}
+            id="psw"
+            required
+          />
 
-        <hr />
+          <hr />
 
-        <button type="submit" className="registerbtn">
-          Signin
-        </button>
-      </div>
+          <button type="submit" className="registerbtn">
+            Signin
+          </button>
+        </div>
 
-      <div className="container signin">
-        <p>
-          Don't have an account? <Link to="/Signup">Sign up</Link>.
-        </p>
-      </div>
-    </form>
+        <div className="container signin">
+          <p>
+            Don't have an account? <Link to="/Signup">Sign up</Link>.
+          </p>
+        </div>
+      </form>
+    </div>
   );
 }
 

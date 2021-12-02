@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import "./components.css";
+import { Button } from "react-bootstrap";
 
 function AuthorsPage() {
   const navigate = useNavigate();
@@ -68,14 +69,14 @@ function AuthorsPage() {
     navigate("/EditAuthor/" + a._id);
   }
   return (
-    <>
+    <div className="main__continer">
       <div className="second__nav">
         <h2 className="header__Book"> Welcome to author page</h2>
-        <button className="new__btn">
+        <Button variant="success" className="new__btn">
           <Link className="Link_SecNav" to="/AddAuthor">
-            Add new author
+            Add author
           </Link>
-        </button>
+        </Button>
       </div>
       <div className="continer">
         <div className="main__authors">
@@ -92,16 +93,21 @@ function AuthorsPage() {
                   src={a.image}
                   alt="Author img"
                 />
-                <div style={{ display: "flex" }}>
-                  <button className="edit__btn" onClick={() => hundleEdit(a)}>
+                <div className="btns__continer">
+                  <Button
+                    variant="secondary"
+                    className="edit__btn"
+                    onClick={() => hundleEdit(a)}
+                  >
                     Edit
-                  </button>
-                  <button
+                  </Button>
+                  <Button
+                    variant="danger"
                     className="delete__btn"
                     onClick={() => hundleDelete(a)}
                   >
                     Delete
-                  </button>
+                  </Button>
                 </div>
               </div>
             );
@@ -131,7 +137,7 @@ function AuthorsPage() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

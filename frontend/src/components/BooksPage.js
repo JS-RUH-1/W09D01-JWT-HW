@@ -3,6 +3,8 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import "./components.css";
 import EditBook from "./EditBook";
+import { Button } from "react-bootstrap";
+
 function BooksPage() {
   function getCookie(cname) {
     var arrayb = document.cookie.split(";");
@@ -49,15 +51,15 @@ function BooksPage() {
     navigate("/EditBook/" + book._id);
   }
   return (
-    <div>
+    <div className="main__continer">
       <div className="second__nav">
         <h2 className="header__Book">Welcome to book page</h2>
-        <button className="new__btn">
+        <Button variant="success" className="new__btn">
           <Link className="Link_SecNav" to="/AddBook">
             {" "}
-            Add new book
+            Add book
           </Link>
-        </button>
+        </Button>
       </div>
       <div className="main__authors">
         {Books.map((book) => {
@@ -67,15 +69,22 @@ function BooksPage() {
               <img className="img" src={book.image} alt="Author img" />
               <p> {book.price} $</p>
               <p> {book.pages} pages</p>
-              <button className="edit__btn" onClick={() => hundleEdit(book)}>
-                Edit
-              </button>
-              <button
-                className="delete__btn"
-                onClick={() => hundleDelete(book)}
-              >
-                Delete
-              </button>
+              <div className="btns__continer">
+                <Button
+                  variant="secondary"
+                  className="edit__btn"
+                  onClick={() => hundleEdit(book)}
+                >
+                  Edit
+                </Button>
+                <Button
+                  variant="danger"
+                  className="delete__btn"
+                  onClick={() => hundleDelete(book)}
+                >
+                  Delete
+                </Button>{" "}
+              </div>
             </div>
           );
         })}
