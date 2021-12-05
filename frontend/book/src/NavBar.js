@@ -37,17 +37,37 @@ export default function NavBar() {
                 </Nav.Link>
               </li>
 
-              <li>
-                <Nav.Link>
-                  <Link to="/SignUp">Sign Up</Link>
-                </Nav.Link>
-              </li>
 
-              <li>
+
+              {
+                if(user){
+                  <div>
+                  <li>Welcome, {user.email}</li>
+                  <li>
+                  <Nav.Link>
+                    <Link to="/Logout">Log out</Link>
+                  </Nav.Link>
+                </li>
+                </div>
+              } else {
+                <div>
+                <li>
                 <Nav.Link>
                   <Link to="/Login">Login</Link>
                 </Nav.Link>
               </li>
+
+              <li>
+              <Nav.Link>
+                <Link to="/SignUp">Sign Up</Link>
+              </Nav.Link>
+            </li>
+              </div>
+              }
+            
+            }
+
+
             </Nav>
           </Container>
         </Navbar>
