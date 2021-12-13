@@ -7,8 +7,22 @@ import Home from "./Home";
 import AddBook from "./AddBook";
 import Signup from "./Signup";
 import Login from "./Login";
+import jwt_decode from "jwt-decode";
 
 export default function NavBar() {
+  let decodedData;
+  const storedToken = localStorage.getItem("token");
+  const storedUser = localStorage.getItem("userEmail");
+  console.log(storedUser);
+  if (storedToken) {
+    decodedData = jwt_decode(storedToken, { payload: true });
+    console.log(decodedData);
+    let expirationDate = decodedData.exp;
+    var current_time = Date.now() / 1000;
+    if (expirationDate < current_time) {
+      localStorage.removeItem("token");
+    }
+  }
   return (
     <div>
       <Router>
@@ -37,37 +51,29 @@ export default function NavBar() {
                 </Nav.Link>
               </li>
 
-
-
-              {
-                if(user){
-                  <div>
-                  <li>Welcome, {user.email}</li>
-                  <li>
-                  <Nav.Link>
-                    <Link to="/Logout">Log out</Link>
-                  </Nav.Link>
-                </li>
-                </div>
-              } else {
+              {storedUser ? (
                 <div>
-                <li>
-                <Nav.Link>
-                  <Link to="/Login">Login</Link>
-                </Nav.Link>
-              </li>
-
-              <li>
-              <Nav.Link>
-                <Link to="/SignUp">Sign Up</Link>
-              </Nav.Link>
-            </li>
-              </div>
-              }
-            
-            }
-
-
+                  <li>Welcome, {storedUser}</li>
+                  <li>
+                    <Nav.Link>
+                      <Link to="/Logout">Log out</Link>
+                    </Nav.Link>
+                  </li>
+                </div>
+              ) : (
+                <div>
+                  <li>
+                    <Nav.Link>
+                      <Link to="/Login">Login</Link>
+                    </Nav.Link>
+                  </li>
+                  <li>
+                    <Nav.Link>
+                      <Link to="/SignUp">Sign Up</Link>
+                    </Nav.Link>
+                  </li>
+                </div>
+              )}
             </Nav>
           </Container>
         </Navbar>

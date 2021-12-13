@@ -1,4 +1,8 @@
+import { useNavigate } from "react-router-dom";
+
 function Login() {
+  let navigate = useNavigate();
+
   function formFunction() {
     const form = document.querySelector("form");
     const emailError = document.querySelector(".email.error");
@@ -26,7 +30,7 @@ function Login() {
           passwordError.textContent = data.errors.password;
         }
         if (data.user) {
-          location.assign("/");
+          navigate("/");
         }
       } catch (err) {
         console.log(err);
