@@ -1,0 +1,30 @@
+{
+  "name": "w08d04",
+  "version": "1.0.0",
+  "description": "* Create an express app for library what we made it yesterday. * Make a connection for mongoose and express app. * Make routes folder, and create 2 files:     1. author route.     2. book route. * endpoints:     * Write CRUD for authors and books.     * Write an endpoint that: show more details about specific author.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Aalmani1/W08D04.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Aalmani1/W08D04/issues"
+  },
+  "homepage": "https://github.com/Aalmani1/W08D04#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "jwt-decode": "^3.1.2",
+    "mongoose": "^6.0.13",
+    "nodemon": "^2.0.15",
+    "validator": "^13.7.0"
+  }
+}
