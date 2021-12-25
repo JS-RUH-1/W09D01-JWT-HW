@@ -6,6 +6,10 @@ const seedAuthor = require("../seed.js/author_seed");
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const e = require("express");
+let BookSchema = require('../schema/Book');
+// const mongoose = require("mongoose");
+const Book = mongoose.model('Book', BookSchema);
+const seedBook = require("../seed.js/book_seed")
 
 router.get("/", (req, res) => {
     Author.find({}, (err, authors) => {
@@ -91,6 +95,75 @@ router.get("/", (req, res) => {
   });
 
   //================= post ==========================
+
+router.post ('/createBook/:id', async (request,response) => {
+  const author= await Author.findById(request.params.id)
+    const createBook = new Book ({
+        title: request.body.data.title,
+        pages: request.body.data.pages,
+        price: request.body.data.price,
+        image: request.body.data.image,
+    })
+    console.log(createBook);
+    author.books.push(createBook)
+    try {
+        await author.save()
+        response.status(201)
+        // const authors = await Author.find()
+        response.send(author)
+    }
+    catch(e) {
+        console.error(e)
+    }
+    console.log("Add");
+})
+
+/////////////////////////////////////////////////
+
+router.put('/updateAuther/:id', async (request,response)=> {
+  const allowedUpdates = ['name', 'age', 'nationality', 'image', 'gender', 'books'];
+  const updates = Object.keys(request.body.data)
+  const isValidOperation  = updates.every((update)=> allowedUpdates.includes(update))
+
+  if(!isValidOperation) {
+      return response.status(400).send({erro: 'Invalid updates'});
+  }
+  try {
+      const author = await Author.findOne({_id: request.params.id});
+
+      if(!author) {return response.status(404).send(404).send()}
+      updates.forEach((update)=> {
+          author[update] = request.body.data[update]
+      })
+      await author.save()
+      response.status(200)
+      // const authors = await Author.find()
+      response.send(author)
+
+  } catch(e){
+      response.status(400).send(e)
+      console.error(e)
+  }
+})
+
+
+router.delete ('/deleteBook/:idAuth/:idBook', async (request,response) => {
+  const bookId = request.params.idBook;
+   try {
+     const author= await Author.findById(request.params.idAuth)
+      if (!author){
+         return response.status(404),send()
+      }
+      await author.books.pull({_id: bookId})
+      await author.save()
+      response.status(201).send(author)
+   }
+   catch(e) {
+       response.status(500).send();
+       console.error(e)
+   }
+})
+
   //================= login part ========
   router.post('/login', (req, res) =>{
 

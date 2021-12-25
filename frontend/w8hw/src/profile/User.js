@@ -11,7 +11,9 @@ export default function User() {
   const [authorId, setAuthorId] = React.useState('')
   const [author, setAuthor] = React.useState({})
   const [authorU, setAuthorU] = React.useState({})
-
+  const [enableEdit,setEnabeEdit] = useState(false)
+  const [idEdit,setIdEdit] = useState()
+  
   React.useEffect(()=>{
     console.log(authors)
   }, [authors])  
