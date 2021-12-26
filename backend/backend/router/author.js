@@ -62,7 +62,7 @@ router.get("/", (req, res) => {
   router.get("/:id", (req, res) => {
     Author.findOne({_id: req.params.id}, (err, author) => {
       res.send(author)
-    }); 
+    }).populate("books"); 
   });
 
   router.delete("/:id", (req, res) => {
@@ -99,10 +99,10 @@ router.get("/", (req, res) => {
 router.post ('/createBook/:id', async (request,response) => {
   const author= await Author.findById(request.params.id)
     const createBook = new Book ({
-        title: request.body.data.title,
-        pages: request.body.data.pages,
-        price: request.body.data.price,
-        image: request.body.data.image,
+        title: request.body.title,
+        pages: request.body.pages,
+        price: request.body.price,
+        image: request.body.image,
     })
     console.log(createBook);
     author.books.push(createBook)
@@ -122,7 +122,7 @@ router.post ('/createBook/:id', async (request,response) => {
 
 router.put('/updateAuther/:id', async (request,response)=> {
   const allowedUpdates = ['name', 'age', 'nationality', 'image', 'gender', 'books'];
-  const updates = Object.keys(request.body.data)
+  const updates = Object.keys(request.body)
   const isValidOperation  = updates.every((update)=> allowedUpdates.includes(update))
 
   if(!isValidOperation) {
@@ -163,6 +163,29 @@ router.delete ('/deleteBook/:idAuth/:idBook', async (request,response) => {
        console.error(e)
    }
 })
+router.put("/editBook/:authId/:bookId", async (req, res) => {
+  console.log("update")
+  Author.update(
+    { "books._id": req.params.bookId },
+    {
+      $set: {
+        "books.$.title": req.body.title,
+        "books.$.pages": req.body.pages,
+        "books.$.price": req.body.price,
+        "books.$.bookImage": req.body.bookImage,
+      },    
+    },
+    function (err, model) {
+      if (err) {
+        console.log(err);
+        return res.send(err);
+      }
+      // return res.json(model);
+    }
+  );
+  const author = await Author.findById(req.params.authId);
+  res.status(201).send(author);
+});
 
   //================= login part ========
   router.post('/login', (req, res) =>{
@@ -196,7 +219,14 @@ router.delete ('/deleteBook/:idAuth/:idBook', async (request,response) => {
      // checks if email already exists
      Author.findOne({email: req.body.email}, (err, dbUser)=>{
        if (dbUser){
-
+        bcrypt.hash(req.body.password, 12 , (err, passwordHash)=>{ 
+          Author.findByIdAndUpdate({_id:dbUser._id},{password: passwordHash}).then((res)=>{
+            console.log(res);
+          })
+        })
+        // Author.findByIdAndUpdate({_id:dbUser._id},{password: bcrypt.hash(req.body.password, 12 )}).then((res)=>{
+        //   console.log(res);
+        // })
          return res.status(409).json({message: "email already exists"})
       
         }else if(req.body.email && req.body.password){

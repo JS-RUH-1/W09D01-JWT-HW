@@ -15,8 +15,7 @@ module.exports = new mongoose.Schema({
       required: [true, 'Book pages should be provided']
     },
     author:{
-      required: true,
       type:mongoose.Schema.Types.ObjectId,
-      ref:'Author'
+      ref:'author'
     }
   });

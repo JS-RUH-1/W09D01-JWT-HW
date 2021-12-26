@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const { isEmail } = require("validator");
+const booksSchema= require("./Book")
 module.exports =  new mongoose.Schema({
     name: {
       type: String,
@@ -28,4 +29,6 @@ module.exports =  new mongoose.Schema({
       },
     gender: String ,
     age: Number,
-  });
+  books: [booksSchema]
+  },
+  );

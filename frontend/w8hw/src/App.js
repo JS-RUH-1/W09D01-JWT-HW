@@ -5,6 +5,8 @@ import Authors from './components/Authors'
 import Singup from './components/Singup'
 import Login from './components/Login'
 import User from './profile/User';
+import Add from './profile/Add';
+import Edit from './profile/Edit'
 import {
   BrowserRouter,
   Routes,
@@ -54,6 +56,8 @@ export default function App() {
         <Route path="/Singup" element={<Singup />} />
         <Route path="/Login" element={<Login />} />
         <Route path="/User" element={<User />} />
+        <Route path="/Add" element={<Add />} />
+        <Route path="/Edit/:id" element={<Edit />} />
       </Routes>
     </div>
   </BrowserRouter>

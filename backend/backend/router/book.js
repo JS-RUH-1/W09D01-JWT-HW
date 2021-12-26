@@ -6,17 +6,17 @@ const seedBook = require("../seed.js/book_seed")
 
 
 
-router.get("/", (req, res) => {
+router.get("/get", (req, res) => {
     Book.find({}, (err, books) => {
       res.send(books)
     }); 
 
 //       =========>dont opint a gine <=============
 
-    // Book.insertMany(seedBook, (err, books) => {
-    //     if (err){ console.log(err)}
-    //       console.log("added provided books data", books)
-    //      });
+    Book.insertMany(seedBook, (err, books) => {
+        if (err){ console.log(err)}
+          console.log("added provided books data", books)
+         });
   });
   //in the req he gonin to create a new book
   router.post("/", (req, res) =>{
