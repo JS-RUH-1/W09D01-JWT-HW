@@ -52,11 +52,12 @@ module.exports = {
   },
 
   create: (req, res) => {
+    console.log("test create ")
     let book = new Book({
-      title: req.data.title,
-      pages: req.data.pages,
-      price: req.data.price,
-      image: req.data.image,
+      title: req.body.data.title,
+      pages: req.body.data.pages,
+      price: req.body.data.price,
+      image: req.body.data.image,
     });
     book.save((error) => {
       if (error) res.send({ erorr: erorr });

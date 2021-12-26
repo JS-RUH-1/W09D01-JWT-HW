@@ -3,7 +3,9 @@ import { useNavigate } from "react-router-dom";
 function Login() {
   let navigate = useNavigate();
 
-  function formFunction() {
+  function formFunction(e) {
+    e.preventDefault();
+
     const form = document.querySelector("form");
     const emailError = document.querySelector(".email.error");
     const passwordError = document.querySelector(".password.error");
@@ -18,7 +20,7 @@ function Login() {
       const password = form.password.value;
 
       try {
-        const res = await fetch("/login", {
+        const res = await fetch("http://localhost:8080/login", {
           method: "POST",
           body: JSON.stringify({ email, password }),
           headers: { "Content-Type": "application/json" },
@@ -40,7 +42,7 @@ function Login() {
 
   return (
     <div>
-      <form onSubmit={formFunction()}>
+      <form onSubmit={(e)=>formFunction(e)}>
         <h2>Login</h2>
         <label for="email">Email</label>
         <input type="text" name="email" required />

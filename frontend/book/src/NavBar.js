@@ -13,7 +13,7 @@ export default function NavBar() {
   let decodedData;
   const storedToken = localStorage.getItem("token");
   const storedUser = localStorage.getItem("userEmail");
-  console.log(storedUser);
+  // console.log(storedUser);
   if (storedToken) {
     decodedData = jwt_decode(storedToken, { payload: true });
     console.log(decodedData);

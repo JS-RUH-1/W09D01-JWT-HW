@@ -1,6 +1,8 @@
 let express = require("express");
 let mongoose = require("mongoose");
 const authRoutes = require("./routes/authRoutes");
+const AuthorController = require("./routes/author");
+const BookRoutes = require("./routes/book");
 const cookieParaser = require("cookie-parser");
 const { requireAuth, checkUser } = require("./middleware/authMiddleware");
 let cors = require("cors");
@@ -14,11 +16,14 @@ mongoose.connect(
   "mongodb://admin:12345@cluster0-shard-00-00.0dxd0.mongodb.net:27017,cluster0-shard-00-01.0dxd0.mongodb.net:27017,cluster0-shard-00-02.0dxd0.mongodb.net:27017/myFirstDatabase?ssl=true&replicaSet=atlas-pey2bn-shard-0&authSource=admin&retryWrites=true&w=majority"
 );
 app.use(cors());
-// app.use("/", router);
-app.get("*", checkUser);
-app.get("/", (req, res) => res.render("home"));
-app.get("/smothies", requireAuth, (req, res) => res.render("smothies"));
-app.use(authRoutes);
+app.use("/", router);
+// app.get("*", checkUser);
+// app.get("/", (req, res) => res.render("home"));
+// app.get("/smothies", requireAuth, (req, res) => res.render("smothies"));
+// app.use(authRoutes);
+// app.use(AuthorController);
+// app.use(BookRoutes);
+
 
 // app.get("./set-cookies", (req, res) => {
 //   // res.setHeader("Set-Cookie", "newUser=true");
@@ -35,7 +40,7 @@ app.use(authRoutes);
 //   res.send(cookies);
 // });
 
-app.listen(8080, () => {
+app.listen(3000, () => {
   console.log("App work");
 });
 

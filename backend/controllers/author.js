@@ -3,6 +3,7 @@ let mongoose = require("mongoose");
 
 module.exports = {
   index: (req, res) => {
+    console.log("indexxxxx")
     Author.find({})
       .then((authors) => {
         res.send(authors);
